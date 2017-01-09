@@ -13,6 +13,10 @@ namespace MicroChallenge5
         {
             var _logFileName = "Log.txt";
             _mainlog = new Logger(_logFileName);
+            _mainlog.MoveOldLog();
+            // This function moves the logfile with the name specified to a new file with specified log file name + currDateTime
+            // As such this function could be omitted, depending on whether we want one continous log file
+            // or one discrete logfile each time we run the program
             _mainlog.Log("Program started.", Levels.INFO);
             Console.WriteLine("Welcome to Owen's program...\n");
             bool shouldExit = false;
@@ -96,28 +100,4 @@ namespace MicroChallenge5
         }
     }
 
-    public class Logger
-    {
-        private string _logFileName;
-
-        public Logger(string fileName)
-        {
-            _logFileName = fileName;
-        }
-
-        public bool Log(string message, Levels Level)
-        {
-            DateTime currentDateTime = DateTime.Now;
-            try
-            {
-                using (TextWriter logFile = File.AppendText(_logFileName))
-                {
-                    logFile.Write($"{currentDateTime}  {Level.ToString()}  {message}\n");
-                    logFile.Close();
-                    return true;
-                }
-            }
-            catch (SystemException) { return false; }
-        }
-    }
 }

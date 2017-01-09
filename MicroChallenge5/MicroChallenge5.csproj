@@ -43,6 +43,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Logger.cs" />
     <Compile Include="MessageManipulator.cs" />
     <Compile Include="MessageEmailer.cs" />
     <Compile Include="MessageEditor.cs" />
