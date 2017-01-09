@@ -10,6 +10,7 @@ namespace MicroChallenge5
         public Logger(string fileName)
         {
             _logFileName = $"Logs\\{fileName}";
+            Directory.CreateDirectory("Logs");
         }
 
         public bool Log(string message, Levels Level)

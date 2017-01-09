@@ -95,7 +95,7 @@ namespace MicroChallenge5
 
         public void SetValidatedFile(XDocument NewFile) { _validatedFile = NewFile; }
 
-        private void IncrementSentMessages()
+        public void IncrementSentMessages()
         {
             _numberOfSentMessages++;
             _numberOfSentMessagesOverall++;
