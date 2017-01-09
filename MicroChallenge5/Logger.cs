@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Globalization;
 
 namespace MicroChallenge5
 {
@@ -9,7 +10,7 @@ namespace MicroChallenge5
 
         public Logger(string fileName)
         {
-            _logFileName = $"Logs\\{fileName}";
+            _logFileName = $"Logs/{fileName}";
             Directory.CreateDirectory("Logs");
         }
 
@@ -18,7 +19,7 @@ namespace MicroChallenge5
             DateTime currentDateTime = DateTime.Now;
             try
             {
-                using (TextWriter logFile = File.AppendText(_logFileName))
+                using (TextWriter logFile = File.AppendText($"{_logFileName}.log"))
                 {
                     logFile.Write($"{currentDateTime}  {Level.ToString()}  {message}\n");
                     logFile.Close();
@@ -31,11 +32,11 @@ namespace MicroChallenge5
         public bool MoveOldLog()
         {
             DateTime currentDateTime = DateTime.Now;
-            if (File.Exists(_logFileName))
+            if (File.Exists($"{_logFileName}.log"))
             {
                 try
                 {
-                    File.Move(_logFileName, $"{_logFileName}{currentDateTime}");
+                    File.Move($"{_logFileName}.log", $"{_logFileName}{currentDateTime.ToString("yyyyMMddHHmmss", CultureInfo.InvariantCulture) }.log");
                     return true;
                 }
                 catch (IOException ex)

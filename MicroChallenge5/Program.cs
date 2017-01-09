@@ -11,7 +11,7 @@ namespace MicroChallenge5
 
         static void Main()
         {
-            var _logFileName = "Log.txt";
+            var _logFileName = "Log";
             _mainlog = new Logger(_logFileName);
             _mainlog.MoveOldLog();
             // This function moves the logfile with the name specified to a new file with specified log file name + currDateTime
