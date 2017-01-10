@@ -13,6 +13,30 @@ namespace MicroChallenge5
         private XDocument _unvalidatedFile, _validatedFile;
         private Logger _messageLog;
 
+        public int NumberOfSentMessages
+        {
+            get
+            {
+                return _numberOfSentMessages;
+            }
+            set
+            {
+                _numberOfSentMessages++;
+            }
+        }
+
+        public int NumberOfSentMessagesOverall
+        {
+            get
+            {
+                return _numberOfSentMessagesOverall;
+            }
+            set
+            {
+                _numberOfSentMessagesOverall++;
+            }
+        }
+
         public Message(string logName)
         {
             var log = new Logger(logName);
@@ -89,16 +113,8 @@ namespace MicroChallenge5
 
         public string View() { return _validatedFile.ToString(); }
 
-        public int GetNumberOfSentMessages() { return _numberOfSentMessages; }
-
         public XDocument GetValidatedFile() { return _validatedFile; }
 
         public void SetValidatedFile(XDocument NewFile) { _validatedFile = NewFile; }
-
-        public void IncrementSentMessages()
-        {
-            _numberOfSentMessages++;
-            _numberOfSentMessagesOverall++;
-        }
     }
 }

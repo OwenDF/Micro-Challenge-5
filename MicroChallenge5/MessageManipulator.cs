@@ -75,7 +75,7 @@ namespace MicroChallenge5
                     UserSetIPAddrSMTPServ();
                     break;
                 case "6":
-                    Console.WriteLine($"So far {_message.GetNumberOfSentMessages()} messages have been sent\n");
+                    Console.WriteLine($"So far {_message.NumberOfSentMessages} messages have been sent\n");
                     Console.ReadKey();
                     break;
                 case "7":

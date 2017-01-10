@@ -24,7 +24,8 @@ namespace MicroChallenge5
             {
                 Email.Credentials = CredentialCache.DefaultNetworkCredentials;
                 Email.Send(senderAddr, receiverAddr, Subject, validatedFile.ToString());
-                _messageToEmail.IncrementSentMessages();
+                _messageToEmail.NumberOfSentMessages = 1;
+                _messageToEmail.NumberOfSentMessagesOverall = 1;
             }
         }
 
