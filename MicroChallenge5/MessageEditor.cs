@@ -6,8 +6,7 @@ namespace MicroChallenge5
 {
     public class MessageEditor
     {
-        private Message _initialMessage;
-        private Message _editedMessage;
+        private Message _messageToEdit;
 
         public static XDocument Edit(Message currMessage)
         {
@@ -17,27 +16,19 @@ namespace MicroChallenge5
 
         public MessageEditor(Message messageToEdit)
         {
-            _initialMessage = messageToEdit;
-            _editedMessage = messageToEdit;
+            _messageToEdit = messageToEdit;
         }
 
         public string View()
         {
-            return _editedMessage.ToString();
+            return _messageToEdit.ToString();
         }
 
-        public void EditData(string xPathString)
+        public XDocument EditMessage(string xPath, string newText)
         {
-            XPathExpression xPath = XPathExpression.Compile(xPathString);
-            EditData(xPath);
-        }
-
-        public void EditData(XPathExpression xPath)
-        {
-            XDocument xmlDocument = _editedMessage.GetValidatedFile();
-            XPathNavigator navigator = xmlDocument.CreateNavigator();
-            navigator.Select(xPath);
-            return;
+            XDocument document = _messageToEdit.GetValidatedFile();
+            document.XPathSelectElement(xPath).Value = newText;
+            return document;
         }
 
         public static void Save(XDocument SaveFile, string SaveAs, Message currMessage)
