@@ -34,7 +34,7 @@ namespace MicroChallenge5
                 case "edit":
                     try
                     {
-                        UserEdit();
+                        UserEdit(_message);
                         // Decided that we should have the option to save as a new file seperated, edit function contains the save function, but this way we can save an unedited file as well if we choose.
                     }
                     catch
@@ -129,12 +129,6 @@ namespace MicroChallenge5
             }
         }
 
-        private void UserEdit()
-        {
-            XDocument editedXml = MessageEditor.Edit(_message);
-            UserSave(editedXml);
-        }
-
         private void CreateEmailer()
         {
             if (_emailer == null)
@@ -166,6 +160,16 @@ namespace MicroChallenge5
                 _emailer.SetIPAddrSMTPServ(Console.ReadLine());
                 Console.WriteLine("Edit successful\n");
                 Console.ReadKey();
+            }
+        }
+
+        private void UserEdit(Message valMessage)
+        {
+            bool shouldExit = false;
+            var editor = new UserMessageEditor(valMessage, _log);
+            while (!shouldExit)
+            {
+                shouldExit = editor.RunMenu();
             }
         }
     }

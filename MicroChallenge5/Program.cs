@@ -85,6 +85,7 @@ namespace MicroChallenge5
             xsdFileName = Console.ReadLine();
             errors = messageToValidate.Parse(xsdFileName);
             Console.WriteLine("Xml document {0}\n", errors == "" ? "validated" : $"failed validation\n{errors}");
+            if (!(errors == "")) { _mainlog.Log(errors, Levels.WARNING); }
             return !(errors == "");
             // return true if 'errors' string contains anything, false if empty.
         }
@@ -99,5 +100,4 @@ namespace MicroChallenge5
             }
         }
     }
-
 }

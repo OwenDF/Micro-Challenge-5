@@ -15,6 +15,22 @@ namespace MicroChallenge5
         private Logger _messageLog;
         private XmlNamespaceManager _namespaces;
 
+        public XDocument UnvalidatedFile
+        {
+            set
+            {
+                _unvalidatedFile = value;
+            }
+        }
+
+        public XmlNamespaceManager Namespaces
+        {
+            get
+            {
+                return _namespaces;
+            }
+        }
+
         public Message(string logName)
         {
             var log = new Logger(logName);
