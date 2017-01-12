@@ -16,3 +16,9 @@ C:\Users\owend\Documents\Visual Studio 2015\Projects\MicroChallenges\Micro-Chall
 C:\Users\owend\Documents\Visual Studio 2015\Projects\MicroChallenges\Micro-Challenge-5\MicroChallenge5\bin\Debug\MicroChallenge5.pdb
 C:\Users\owend\Documents\Visual Studio 2015\Projects\MicroChallenges\Micro-Challenge-5\MicroChallenge5\obj\Debug\MicroChallenge5.csprojResolveAssemblyReference.cache
 C:\Users\owend\Documents\Visual Studio 2015\Projects\MicroChallenges\Micro-Challenge-5\MicroChallenge5\obj\Debug\MicroChallenge5.exe
+C:\Users\Owen\Documents\Visual Studio 2015\Projects\Micro-Challenge-5\MicroChallenge5\bin\Debug\MicroChallenge5.exe.config
+C:\Users\Owen\Documents\Visual Studio 2015\Projects\Micro-Challenge-5\MicroChallenge5\obj\Debug\MicroChallenge5.pdb
+C:\Users\Owen\Documents\Visual Studio 2015\Projects\Micro-Challenge-5\MicroChallenge5\bin\Debug\MicroChallenge5.exe
+C:\Users\Owen\Documents\Visual Studio 2015\Projects\Micro-Challenge-5\MicroChallenge5\bin\Debug\MicroChallenge5.pdb
+C:\Users\Owen\Documents\Visual Studio 2015\Projects\Micro-Challenge-5\MicroChallenge5\obj\Debug\MicroChallenge5.csprojResolveAssemblyReference.cache
+C:\Users\Owen\Documents\Visual Studio 2015\Projects\Micro-Challenge-5\MicroChallenge5\obj\Debug\MicroChallenge5.exe
