@@ -2,6 +2,7 @@ using System.Xml.Schema;
 using System.Xml.Linq;
 using System.IO;
 using System.Text;
+using System.Xml;
 
 namespace MicroChallenge5
 {
@@ -12,6 +13,7 @@ namespace MicroChallenge5
         private static int _numberOfSentMessagesOverall = 0;
         private XDocument _unvalidatedFile, _validatedFile;
         private Logger _messageLog;
+        private XmlNamespaceManager _namespaces;
 
         public Message(string logName)
         {
@@ -34,10 +36,14 @@ namespace MicroChallenge5
             // The specification for the task asked for a standalone 'Load' function, so this has been left as public.
             try
             {
-                XDocument xmlDoc = XDocument.Load(filename);
+                var xmlReader = new XmlTextReader(filename);
+                XDocument xmlDoc = XDocument.Load(xmlReader);
                 _unvalidatedFile = xmlDoc;
+                XmlNameTable nameTable = xmlReader.NameTable;
+                _namespaces = new XmlNamespaceManager(nameTable);
             }
             catch
+            // may need to rethink the catch block, now that we have added more logic for namespaces to the function.
             {
                 var exText = $"Specified file '{filename}'could not be loaded";
                 _messageLog.Log(exText, Levels.ERROR);
