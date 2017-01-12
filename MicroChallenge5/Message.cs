@@ -55,6 +55,30 @@ namespace MicroChallenge5
             }
         }
 
+        public int NumberOfSentMessages
+        {
+            get
+            {
+                return _numberOfSentMessages;
+            }
+            set
+            {
+                _numberOfSentMessages++;
+            }
+        }
+
+        public int NumberOfSentMessagesOverall
+        {
+            get
+            {
+                return _numberOfSentMessagesOverall;
+            }
+            set
+            {
+                _numberOfSentMessagesOverall++;
+            }
+        }
+
         public Message(string logName)
         {
             var log = new Logger(logName);
