@@ -27,7 +27,7 @@ namespace MicroChallenge5
         public XDocument EditMessage(string xPath, string newText)
         {
             XDocument document = _messageToEdit.GetValidatedFile();
-            document.XPathSelectElement(xPath, _messageToEdit.GetNamespaces()).Value = newText;
+            document.XPathSelectElement(xPath, _messageToEdit.Namespaces).Value = newText;
             return document;
         }
 

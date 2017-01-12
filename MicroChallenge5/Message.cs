@@ -106,7 +106,12 @@ namespace MicroChallenge5
             if (errors.ToString() == "") _validatedFile = _unvalidatedFile;
             return errors.ToString();
             // Return an empty string if no errors.
+        }
 
+        public void AddDefaultNamespace(string xmlNamespace)
+        {
+            // This is a method for adding a namespace, really would like to improve this
+            _namespaces.AddNamespace("e", xmlNamespace);
         }
 
         public string View() { return _validatedFile.ToString(); }

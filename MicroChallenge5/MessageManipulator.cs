@@ -32,16 +32,15 @@ namespace MicroChallenge5
                     break;
                 case "2":
                 case "edit":
-                    try
-                    {
+                    //try
+                    //{
                         UserEdit(_message);
-                        // Decided that we should have the option to save as a new file seperated, edit function contains the save function, but this way we can save an unedited file as well if we choose.
-                    }
-                    catch
-                    {
-                        _log.Log("Error processing file.", Levels.ERROR);
-                        Console.WriteLine("Error processing file. See log for details");
-                    }
+                    //}
+                    //catch
+                    //{
+                    //    _log.Log("Error processing file.", Levels.ERROR);
+                    //    Console.WriteLine("Error processing file. See log for details");
+                    //}
                     break;
                 case "3":
                 case "save":
