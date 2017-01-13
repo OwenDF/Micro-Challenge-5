@@ -32,15 +32,15 @@ namespace MicroChallenge5
                     break;
                 case "2":
                 case "edit":
-                    //try
-                    //{
+                    try
+                    {
                         UserEdit(_message);
-                    //}
-                    //catch
-                    //{
-                    //    _log.Log("Error processing file.", Levels.ERROR);
-                    //    Console.WriteLine("Error processing file. See log for details");
-                    //}
+                    }
+                    catch
+                    {
+                        _log.Log("Error processing file.", Levels.ERROR);
+                        Console.WriteLine("Error processing file. See log for details");
+                    }
                     break;
                 case "3":
                 case "save":
