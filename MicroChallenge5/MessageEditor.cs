@@ -8,20 +8,9 @@ namespace MicroChallenge5
     {
         private Message _messageToEdit;
 
-        public static XDocument Edit(Message currMessage)
-        {
-            XDocument Initial = currMessage.GetValidatedFile();
-            return Initial;//This is temporary. Make sure to validate file after editing when we implement.
-        }
-
         public MessageEditor(Message messageToEdit)
         {
             _messageToEdit = messageToEdit;
-        }
-
-        public string View()
-        {
-            return _messageToEdit.ToString();
         }
 
         public XDocument EditMessage(string xPath, string newText)
@@ -33,6 +22,7 @@ namespace MicroChallenge5
 
         public static void Save(XDocument SaveFile, string SaveAs, Message currMessage)
         {
+            // This is an old function, may want to update it so it's not static or move it to another class.
             using (StreamWriter NewXmlFile = new StreamWriter(SaveAs, false))
             {
                 NewXmlFile.WriteLine(SaveFile);
