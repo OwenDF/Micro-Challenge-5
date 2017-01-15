@@ -1,3 +1,4 @@
+using System;
 using System.Xml.Schema;
 using System.Xml.Linq;
 using System.IO;
@@ -58,10 +59,17 @@ namespace MicroChallenge5
                 XmlNameTable nameTable = xmlReader.NameTable;
                 _namespaces = new XmlNamespaceManager(nameTable);
             }
+            catch (FileNotFoundException ex)
+            // This exception occurs in the XmlTextReader constructor.
+            {
+                _messageLog.Log($"Error loading specified .xml file {ex}", Levels.ERROR);
+                throw;
+            }
             catch
             // may need to rethink the catch block, now that we have added more logic for namespaces to the function.
+            // this block also catches the blank input case
             {
-                var exText = $"Specified file '{filename}'could not be loaded";
+                var exText = $"Specified file '{filename}' could not be loaded.";
                 _messageLog.Log(exText, Levels.ERROR);
                 throw new IOException(exText);
             }
