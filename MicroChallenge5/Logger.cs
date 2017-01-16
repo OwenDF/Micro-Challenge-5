@@ -21,7 +21,7 @@ namespace MicroChallenge5
             {
                 using (TextWriter logFile = File.AppendText($"{_logFileName}.log"))
                 {
-                    logFile.Write($"{currentDateTime}  {Level.ToString()}  {message}\n");
+                    logFile.Write($"{currentDateTime.ToString("o", CultureInfo.InvariantCulture)}  {Level.ToString()}  {message}\n");
                     logFile.Close();
                     return true;
                 }
