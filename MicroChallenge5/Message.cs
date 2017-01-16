@@ -59,20 +59,30 @@ namespace MicroChallenge5
                 XmlNameTable nameTable = xmlReader.NameTable;
                 _namespaces = new XmlNamespaceManager(nameTable);
             }
+            catch (XmlException ex)
+            {
+                _messageLog.Log($"Error reading XML {ex}", Levels.ERROR);
+                throw;
+            }
+            catch (ArgumentException ex) when (ex.Message == "The URL cannot be empty.\r\nParameter name: url")
+            // For catching 0 input
+            {
+                _messageLog.Log($"Blank input {ex}", Levels.ERROR);
+                throw new IOException("Error: no input");
+            }
             catch (FileNotFoundException ex)
             // This exception occurs in the XmlTextReader constructor.
             {
                 _messageLog.Log($"Error loading specified .xml file {ex}", Levels.ERROR);
                 throw;
             }
-            catch
-            // may need to rethink the catch block, now that we have added more logic for namespaces to the function.
-            // this block also catches the blank input case
-            {
-                var exText = $"Specified file '{filename}' could not be loaded.";
-                _messageLog.Log(exText, Levels.ERROR);
-                throw new IOException(exText);
-            }
+            //catch
+            //// may need to rethink the catch block, now that we have added more logic for namespaces to the function.
+            //{
+            //    var exText = $"Specified file '{filename}' could not be loaded.";
+            //    _messageLog.Log(exText, Levels.ERROR);
+            //    throw new IOException(exText);
+            //}
         }
 
         public void SetXSD(string filename) { _filePathToXSD = filename; }

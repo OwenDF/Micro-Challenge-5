@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Xml;
 
 namespace MicroChallenge5
 {
@@ -56,6 +57,11 @@ namespace MicroChallenge5
                     catch (IOException ex)
                     {
                         Console.WriteLine("\n" + ex.Message);
+                        Console.ReadKey();
+                    }
+                    catch (XmlException ex)
+                    {
+                        Console.WriteLine("Error reading XML\n" + ex.Message);
                         Console.ReadKey();
                     }
                     break;

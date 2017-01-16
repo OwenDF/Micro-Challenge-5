@@ -37,8 +37,10 @@ ehthumbs.db
 Thumbs.db
 
 # Mine #
+########
 *~
 .vs
 /MicroChallenge5/bin/debug/Logs
 /MicroChallenge5/bin/release/Logs
 *.pdb
+*.test
