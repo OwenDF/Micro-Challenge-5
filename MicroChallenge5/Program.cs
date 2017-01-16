@@ -95,7 +95,7 @@ namespace MicroChallenge5
 
             Console.WriteLine("Please enter the name of the xsd file to validate against (including the .xsd extension");
             xsdFileName = Console.ReadLine();
-            errors = messageToValidate.Parse(xsdFileName);
+            errors = messageToValidate.Parse(xsdFileName, "http://www.w3schools.com");
             Console.WriteLine("Xml document {0}\n", errors == "" ? "validated" : $"failed validation\n{errors}");
             if (!(errors == "")) { _mainlog.Log(errors, Levels.WARNING); }
             return !(errors == "");

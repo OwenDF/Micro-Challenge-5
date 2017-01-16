@@ -87,9 +87,9 @@ namespace MicroChallenge5
 
         public void SetXSD(string filename) { _filePathToXSD = filename; }
 
-        public string Parse() { return Parse(_filePathToXSD); }
+        public string Parse(string xmlNamespace) { return Parse(_filePathToXSD); }
 
-        public string Parse(string xsdfile)
+        public string Parse(string xsdfile, string xmlNamespace)
         {
             try
             {
@@ -99,7 +99,7 @@ namespace MicroChallenge5
                 }
                 var schemaSet = new XmlSchemaSet();
                 var schema = new XmlTextReader(_filePathToXSD);
-                schemaSet.Add("http://www.w3schools.com", schema);
+                schemaSet.Add(xmlNamespace, schema);
                 return ParseAgainstSchema(schemaSet);
             }
             catch (FileNotFoundException ex)

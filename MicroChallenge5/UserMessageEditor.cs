@@ -55,13 +55,14 @@ namespace MicroChallenge5
 
         private bool EditText(string xPath)
         {
+            string xmlNamespace = "http://www.w3schools.com";
             Console.WriteLine("What is the new text that you would like in this field of the .xml message?");
             var newText = Console.ReadLine().ToLower(); 
             var editor = new MessageEditor(_message);
             // The below logic adds the given namespace as the default, making the xPath below work.
-            _message.AddDefaultNamespace("http://www.w3schools.com");
+            _message.AddDefaultNamespace(xmlNamespace);
             _message.UnvalidatedFile = editor.EditMessage(xPath, newText);
-            var errors = _message.Parse();
+            var errors = _message.Parse(xmlNamespace);
             Console.WriteLine("Xml document {0}\n", errors == "" ? "validated" : $"failed validation\n{errors}" + "\nPlease try again");
             if (!(errors == "")) { _log.Log(errors, Levels.WARNING); }
             return !(errors == "");
