@@ -44,3 +44,4 @@ Thumbs.db
 /MicroChallenge5/bin/release/Logs
 *.pdb
 *.test
+*.cache
