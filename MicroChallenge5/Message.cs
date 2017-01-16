@@ -98,17 +98,31 @@ namespace MicroChallenge5
                     SetXSD(xsdfile);
                 }
                 var schemaSet = new XmlSchemaSet();
-                schemaSet.Add("http://www.w3schools.com", _filePathToXSD);
+                var schema = new XmlTextReader(_filePathToXSD);
+                schemaSet.Add("http://www.w3schools.com", schema);
                 return ParseAgainstSchema(schemaSet);
+            }
+            catch (FileNotFoundException ex)
+            // Creation of XmlTextReader
+            {
+                _messageLog.Log($"Error loading specified file {ex}", Levels.ERROR);
+                throw;
+            }
+            catch (ArgumentException ex) when (ex.Message == "The URL cannot be empty.\r\nParameter name: url")
+            // For catching 0 input
+            {
+                _messageLog.Log($"Blank input {ex}", Levels.ERROR);
+                throw new IOException("Error: no input");
+            }
+            catch (XmlException ex)
+            // Creation of XmlTextReader
+            {
+                _messageLog.Log($"Error loading XSD file {ex}", Levels.ERROR);
+                throw;
             }
             catch (XmlSchemaException ex)
             {
                 _messageLog.Log($"Error validating file {ex}", Levels.ERROR);
-                throw;
-            }
-            catch (IOException ex)
-            {
-                _messageLog.Log($"Error loading specified .xsd file {ex}", Levels.ERROR);
                 throw;
             }
         }

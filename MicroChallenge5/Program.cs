@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Xml;
+using System.Xml.Schema;
 
 namespace MicroChallenge5
 {
@@ -61,7 +62,12 @@ namespace MicroChallenge5
                     }
                     catch (XmlException ex)
                     {
-                        Console.WriteLine("Error reading XML\n" + ex.Message);
+                        Console.WriteLine("Error reading file\n" + ex.Message);
+                        Console.ReadKey();
+                    }
+                    catch (XmlSchemaException ex)
+                    {
+                        Console.WriteLine("Error validating file\n" + ex.Message);
                         Console.ReadKey();
                     }
                     break;
