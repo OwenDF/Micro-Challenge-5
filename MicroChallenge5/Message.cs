@@ -137,9 +137,10 @@ namespace MicroChallenge5
 
             _unvalidatedFile.Validate(schemas, (o, e) =>//I literally have no idea what this is or what it does but it seems to work.
             {
-                errors.Append(e.Message);
+                errors.Append(e.Message + "\n");
             });
             if (errors.ToString() == "") _validatedFile = _unvalidatedFile;
+            else _messageLog.Log(errors.ToString(), Levels.WARNING);
             return errors.ToString();
             // Return an empty string if no errors.
         }
