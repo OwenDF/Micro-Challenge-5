@@ -53,11 +53,13 @@ namespace MicroChallenge5
             // The specification for the task asked for a standalone 'Load' function, so this has been left as public.
             try
             {
-                var xmlReader = new XmlTextReader(filename);
-                XDocument xmlDoc = XDocument.Load(xmlReader);
-                _unvalidatedFile = xmlDoc;
-                XmlNameTable nameTable = xmlReader.NameTable;
-                _namespaces = new XmlNamespaceManager(nameTable);
+                using (var xmlReader = new XmlTextReader(filename))
+                {
+                    XDocument xmlDoc = XDocument.Load(xmlReader);
+                    _unvalidatedFile = xmlDoc;
+                    XmlNameTable nameTable = xmlReader.NameTable;
+                    _namespaces = new XmlNamespaceManager(nameTable);
+                }
             }
             catch (XmlException ex)
             {
@@ -98,9 +100,11 @@ namespace MicroChallenge5
                     SetXSD(xsdfile);
                 }
                 var schemaSet = new XmlSchemaSet();
-                var schema = new XmlTextReader(_filePathToXSD);
-                schemaSet.Add(xmlNamespace, schema);
-                return ParseAgainstSchema(schemaSet);
+                using (var schema = new XmlTextReader(_filePathToXSD))
+                {
+                    schemaSet.Add(xmlNamespace, schema);
+                    return ParseAgainstSchema(schemaSet);
+                }
             }
             catch (FileNotFoundException ex)
             // Creation of XmlTextReader
