@@ -89,7 +89,7 @@ namespace MicroChallenge5
 
         public void SetXSD(string filename) { _filePathToXSD = filename; }
 
-        public string Parse(string xmlNamespace) { return Parse(_filePathToXSD); }
+        public string Parse(string xmlNamespace) { return Parse(_filePathToXSD, xmlNamespace); }
 
         public string Parse(string xsdfile, string xmlNamespace)
         {
