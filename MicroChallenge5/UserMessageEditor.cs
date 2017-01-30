@@ -62,7 +62,7 @@ namespace MicroChallenge5
             // The below logic adds the given namespace as the default, making the xPath below work.
             _message.AddDefaultNamespace(xmlNamespace);
             _message.UnvalidatedFile = editor.EditMessage(xPath, newText);
-            var errors = _message.Parse(xmlNamespace);
+            var errors = _message.Parse();
             Console.WriteLine("Xml document {0}\n", errors == "" ? "validated" : $"failed validation\n{errors}" + "\nPlease try again");
             if (!(errors == "")) { _log.Log(errors, Levels.WARNING); }
             return !(errors == "");
